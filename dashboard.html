@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bobflix - Dashboard</title>
+</head>
+<body>
+  <h1 id="welcomeMsg">Hello, ...</h1>
+  <script>
+    async function loadUser() {
+      const res = await fetch("/api/session.js");
+      const data = await res.json();
+      if (data.username) {
+        document.getElementById("welcomeMsg").textContent = "Hello, " + data.username;
+      } else {
+        window.location.href = "/login.html";
+      }
+    }
+
+    loadUser();
+  </script>
+</body>
+</html>
 

@@ -8,6 +8,6 @@
     "mongodb": "^6.5.0",
     "validator": "^13.11.0",
     "iron-session": "^8.0.4",
-    "resend": "^0.20.0"
+    "resend": "^4.6.0"
   }
 }

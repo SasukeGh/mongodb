@@ -7,6 +7,14 @@
 </head>
 <body>
   <h1 id="welcomeMsg">Hello, ...</h1>
+  <button onclick="logout()">Logout</button>
+  <button onclick="logout()">Logout</button>
+<script>
+  async function logout() {
+    await fetch('/api/logout.js');
+    window.location.href = '/login.html';
+  }
+</script>
   <script>
     async function loadUser() {
       const res = await fetch("/api/session.js");

@@ -6,7 +6,7 @@
     "bcryptjs": "^2.4.3",
     "express-rate-limit": "^7.0.0",
     "mongodb": "^6.5.0",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
     "iron-session": "^7.1.1"
   }
 }

@@ -6,10 +6,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const client = new MongoClient(process.env.MONGODB_URI);
 const dbName = "bobflix";
 
-export const config = {
-  runtime: "edge",
-};
-
 export default async function handler(req) {
   const url = new URL(req.url);
   const token = url.searchParams.get("token");

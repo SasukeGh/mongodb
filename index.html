@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script type="module">
+    (async () => {
+      try {
+        const res = await fetch('/api/session.js');
+        const data = await res.json();
+
+        if (data.loggedIn) {
+          window.location.href = '/dashboard.html';
+        } else {
+          window.location.href = '/login.html';
+        }
+      } catch (err) {
+        console.error('Error checking session:', err);
+        window.location.href = '/login.html';
+      }
+    })();
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
 

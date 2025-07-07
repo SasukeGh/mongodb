@@ -12,10 +12,6 @@ const sessionOptions = {
 
 const session = ironSession(sessionOptions);
 
-export const config = {
-  runtime: "edge",
-};
-
 export default async function handler(req) {
   const res = new Response(null);
   const sessionStore = session(req, res);

@@ -1,0 +1,11 @@
+{
+  "name": "bobflix-auth",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express-rate-limit": "^7.0.0",
+    "mongodb": "^6.5.0",
+    "validator": "^13.11.0"
+  }
+}

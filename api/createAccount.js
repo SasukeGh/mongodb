@@ -9,7 +9,7 @@ const dbName = "bobflix";
 // Rate limiter: max 5 signups per IP per 10 minutes
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 5,
+  max: 2,
   message: { error: "Too many signup attempts, try again later." },
   standardHeaders: true,
   legacyHeaders: false,

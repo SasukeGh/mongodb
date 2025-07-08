@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid username" });
   }
 
-  const uri = process.env.MONGODB_URI;
+  const uri = "mongodb+srv://sasukeshinobi2501:Ds9Hdzt6Lwva8PKR@cluster0.mxpdzkg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
   if (!uri) {
     console.error("❌ MONGODB_URI is missing");
     return res.status(500).json({ error: "Database configuration missing" });

@@ -25,7 +25,7 @@
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
-      const res = await fetch("/api/createAccount.js", {
+      const res = await fetch("/api/signup.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),

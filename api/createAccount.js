@@ -53,3 +53,4 @@ export default async function handler(req, res) {
     await client.close();
   }
 }
+console.log("MONGO URI:", process.env.MONGODB_URI);

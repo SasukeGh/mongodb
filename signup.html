@@ -33,7 +33,7 @@
 
       const data = await res.json();
       if (data.success) {
-        window.location.href = "/login.html";
+       let x=1;
       } else {
         document.getElementById("message").textContent = data.error || "Signup failed.";
       }

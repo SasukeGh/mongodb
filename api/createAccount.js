@@ -2,9 +2,6 @@ import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
 import validator from "validator";
 
-const client = new MongoClient(process.env.MONGODB_URI);
-const dbName = "Cluster0"; // change this if your DB name is different
-
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
@@ -23,12 +20,21 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid username" });
   }
 
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.error("❌ MONGODB_URI is missing");
+    return res.status(500).json({ error: "Database configuration missing" });
+  }
+
+  const client = new MongoClient(uri);
+  const dbName = "bobflix"; // ✅ replace with your real DB name
+
   try {
     await client.connect();
     const db = client.db(dbName);
     const users = db.collection("users");
 
-    // One-time: create unique indexes on email and username
+    // One-time index creation (Mongo ignores if already exists)
     await users.createIndex({ email: 1 }, { unique: true });
     await users.createIndex({ username: 1 }, { unique: true });
 
@@ -38,7 +44,7 @@ export default async function handler(req, res) {
       username,
       email,
       password: hash,
-      verified: false, // for email verification
+      verified: false,
       createdAt: new Date()
     });
 
@@ -47,10 +53,9 @@ export default async function handler(req, res) {
     if (err.code === 11000) {
       return res.status(409).json({ error: "Email or username already exists" });
     }
-    console.error("Account creation error:", err);
+    console.error("🔥 Account creation error:", err);
     return res.status(500).json({ error: "Internal server error" });
   } finally {
     await client.close();
   }
 }
-console.log("MONGO URI:", process.env.MONGODB_URI);
